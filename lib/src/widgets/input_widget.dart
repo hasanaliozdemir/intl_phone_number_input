@@ -88,6 +88,8 @@ class InternationalPhoneNumberInput extends StatefulWidget {
 
   final List<String>? countries;
 
+  final double? selectorHeight;
+
   InternationalPhoneNumberInput(
       {Key? key,
       this.selectorConfig = const SelectorConfig(),
@@ -127,7 +129,8 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.cursorColor,
       this.autofillHints,
       this.countries,
-      this.selectorBoxDecoration})
+      this.selectorBoxDecoration,
+      this.selectorHeight})
       : super(key: key);
 
   @override
@@ -296,6 +299,7 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
     if (widget.selectorConfig.setSelectorButtonAsPrefixIcon) {
       return value.copyWith(
           prefixIcon: SelectorButton(
+        height: widget.selectorHeight,
         country: country,
         countries: countries,
         onCountryChanged: onCountryChanged,
