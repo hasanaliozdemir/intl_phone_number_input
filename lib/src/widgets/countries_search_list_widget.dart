@@ -12,6 +12,7 @@ class CountrySearchListWidget extends StatefulWidget {
   final bool autoFocus;
   final bool? showFlags;
   final bool? useEmoji;
+  final bool? showCountryCodes;
 
   CountrySearchListWidget(
     this.countries,
@@ -21,6 +22,7 @@ class CountrySearchListWidget extends StatefulWidget {
     this.showFlags,
     this.useEmoji,
     this.autoFocus = false,
+    this.showCountryCodes,
   });
 
   @override
@@ -92,6 +94,7 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
                 locale: widget.locale,
                 showFlags: widget.showFlags!,
                 useEmoji: widget.useEmoji!,
+                showCountryCodes: widget.showCountryCodes!,
               );
               // return ListTile(
               //   key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
@@ -136,6 +139,7 @@ class DirectionalCountryListTile extends StatelessWidget {
   final String? locale;
   final bool showFlags;
   final bool useEmoji;
+  final bool showCountryCodes;
 
   const DirectionalCountryListTile({
     Key? key,
@@ -143,13 +147,16 @@ class DirectionalCountryListTile extends StatelessWidget {
     required this.locale,
     required this.showFlags,
     required this.useEmoji,
+    required this.showCountryCodes,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
-      leading: (showFlags ? _Flag(country: country, useEmoji: useEmoji) : null),
+      leading: (showCountryCodes)
+          ? Text(country.alpha2Code ?? "")
+          : (showFlags ? _Flag(country: country, useEmoji: useEmoji) : null),
       title: Align(
         alignment: AlignmentDirectional.centerStart,
         child: Text(
