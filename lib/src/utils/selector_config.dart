@@ -16,6 +16,8 @@ class SelectorConfig {
   /// and list items within the selector
   final bool showFlags;
 
+  final bool showCountryCodes;
+
   /// [useEmoji], uses emoji flags instead of png assets
   final bool useEmoji;
 
@@ -34,6 +36,7 @@ class SelectorConfig {
   final bool trailingSpace;
 
   const SelectorConfig({
+    this.showCountryCodes = false,
     this.selectorType = PhoneInputSelectorType.DROPDOWN,
     this.showFlags = true,
     this.useEmoji = false,
